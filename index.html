@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM sur les équations différentielles ordinaires</title>
+    <link rel="stylesheet" href="styles.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Méthodes de résolution des équations différentielles ordinaires</h1>    
+    </header>
+    <main>
+        <section>
+            <article>
+                <h2>Niveau terminale spécialité maths (<a href="https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/90/7/spe246_annexe_1158907.pdf" target="_blank">programme officiel</a>)</h2>
+                <h3>Contenus</h3>
+                <ul>
+                    <li>
+                        Equation différentielle \(y' = f\). Notion de primitive d'une fonction
+                        continue sur un intervalle. Deux primitives d'une même fonction continue 
+                        sur un intervalle diffèrent d'une constante.
+                    </li>
+                    <li>
+                        Primitives des fonctions de référence : \(x\mapsto x^n\) pour 
+                        \(n\in\mathbb{Z}\), \(x\mapsto \dfrac{1}{\sqrt{x}}\), exponentielle,
+                        sinus, cosinus.
+                    </li>
+                    <li>
+                        Equation différentielle \(y' = ay\), où \(a\) est un nombre réel ; 
+                        allure des courbes. Equation différentielle \(y' = ay + b\).
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>Capacités attendues</h3>
+                <ul>
+                    <li id="CA1">
+                        Calculer une primitive en utilisant les primitives de référence et 
+                        les fonctions de la forme \((v'\circ u)\times u'\).
+                        <a href="#MEO1">(mise en oeuvre)</a> 
+                    </li>
+                    <li id="CA2">
+                        Pour une équation différentielle \(y' = ay + b\) (\(a\neq 0\)) : 
+                        déterminer une solution particulière constante ; utiliser cette 
+                        solution pour déterminer toutes les solutions.
+                        <a href="#MEO2">(mise en oeuvre)</a>
+                    </li>
+                    <li id="CA3">
+                        Pour une équation différentielle \(y' = ay + f\) : à partir de la 
+                        donnée d'une solution particulière, déterminer toutes les solutions.
+                        <a href="#MEO3">(mise en oeuvre)</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>Démonstrations</h3>
+                <ul>
+                    <li id="demo1">
+                        Deux primitives d'une même fonction continue sur un intervalle 
+                        diffèrent d'une constante.
+                    </li>
+                    <li id="demo2">
+                        Résolution de l'équation différentielle \(y' = ay\) où \(a\) est un 
+                        nombre réel.
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>Approfondissements possibles</h3>
+                <ul>
+                    <li>
+                        Autres exemples d'équations différentielles, éventuellement en lien 
+                        avec une modélisation, par exemple l'équation logistique.
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>Exemple d'algorithme</h3>
+                <ul>
+                    <li>
+                        Résolution par la méthode d'Euler de \(y' = f\), de \(y' = ay + b\).
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section id="yourgame">
+            <h2>À vous de jouer</h2>
+            
+            <article>
+                <h3 id="MEO1">Calculs de primitives <a href="#CA1">(revoir le programme officiel)</a></h3>
+                <ol start="1">
+                    <li class="question" data-points="2" data-type="checkbox">
+                        <p>
+                            Une primitive de \(\ln(x)\) est : 
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q1r1"><label for="q1r1">\(x\ln(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q1r2"><label for="q1r2">\(x^2\ln(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q1r3" data-correct><label for="q1r3">\(x\ln(x) - x\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q1r4" data-correct><label for="q1r4">\(x\ln(x) - x + k\) avec \(k\in\mathbb{R}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="1" data-type="radio">
+                        <p>
+                            Une primitive de \(f(x) = \cos(x)\sin(x)\) est :
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="radio" id="q2r1" data-correct><label for="q2r1">\(F(x) = \dfrac{[\sin(x)]^2}{2}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q2r2"><label for="q2r2">\(F(x) = \dfrac{[\sin(x)]^2}{4}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q2r21"><label for="q2r3">\(F(x) = \dfrac{[\cos(x)]^2}{2}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q2r4"><label for="q2r4">\(F(x) = \dfrac{[\cos(x)]^2}{4}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="3" data-type="checkbox">
+                        <p>
+                            Une primitive de \(1 + [\tan(x)]^2\) est  
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q3r1" data-correct><label for="q3r1">\(\dfrac{\sin(x)}{\cos(x)}\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q3r2" data-correct><label for="q3r2">\(\tan(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q3r3" data-correct><label for="q3r3">une primitive de \(\dfrac{1}{[\cos(x)]^2}\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q3r4"><label for="q3r4">\(\dfrac{\cos(x)}{\sin(x)}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="4" data-type="checkbox">
+                        <p>
+                            Calcul de \(\int\dfrac{2x}{x^2 + 1}dx\) on a :   
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q4r1" data-correct><label for="q4r1">\(u(x) = x^2 + 1\) et \(v(x) = \ln(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q4r2" data-correct><label for="q4r2">\(\dfrac{2x}{x^2 + 1}dx = (v'(u(x)))\times u'(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q4r3" data-correct><label for="q4r3">\(u'(x) = 2x\) et \(v'(x) = \dfrac{1}{x}\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q4r4" data-correct><label for="q4r4">\(\int\dfrac{2x}{x^2 + 1}dx = \ln(x^2 + 1) + k\) avec \(k\in\mathbb{R}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </article>
+            <article>
+                <h3 id="MEO2">Résoudre une équation différentielle de la forme \(y' = ay + b\) à partir d'une solution particulière <a href="#CA2">(revoir le programme)</a></h3>
+                <ol start="5">
+                    <li class="question" data-points="1" data-type="radio">
+                        <p>
+                            La solution \(f\) de l'équation différentielle \(y' = -3y + 7\)
+                            telle que \(f(0) = 1\) est la fonction définie sur \(\mathbb{R}\)
+                            par : <br>
+                            (extrait de l'exercice 2 du sujet du 20 juin 2024 
+                            <a href="https://apmep.fr/IMG/pdf/Spe_Polynesie_J2_20_06_2024_DV.pdf" target="_blank">Polynésie</a>)
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="radio" id="q5r1"><label for="q5r1">\(f(x) = e^{-3x}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q5r2" data-correct><label for="q5r2">\(f(x) = -\dfrac{4}{3}e^{-3x} + \dfrac{7}{3}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q5r3"><label for="q5r3">\(f(x) = e^{-3x} + \dfrac{7}{3}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q5r4"><label for="q5r4">\(f(x) = -\dfrac{10}{3}e^{-3x} - \dfrac{7}{3}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="4" data-type="checkbox">
+                        <p>
+                            Pour résoudre l'équation différentielle \(y' = ay + b\) où (\(a\neq 0\)) :  
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q6r1" data-correct><label for="q6r1">On cherche une solution particulière \(y_P\) telle que \(y_P' = 0\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q6r2" data-correct><label for="q6r2">\(y_P = -\dfrac{b}{a}\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q6r3" data-correct><label for="q6r3">On pose \(z = y - y_P\) ce qui donne \(z' = az\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q6r4" data-correct><label for="q6r4">\(z = Ce^{ax}\) avec \(C\in\mathbb{R}\) et \(y = Ce^{ax} - \dfrac{b}{a}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="1" data-type="radio">
+                        <p>
+                            Soit l'équation différentielle \((E) : y' = 2y + 3\) alors 
+                            la solution générale est : 
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="radio" id="q7r1"><label for="q7r1">\(f(x) = Ce^{2x}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q7r2"><label for="q7r2">\(f(x) = Ce^{-2x}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q7r3"><label for="q7r3">\(f(x) = Ce^{-2x} - \dfrac{3}{2}\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q7r4" data-correct><label for="q7r4">\(f(x) = Ce^{2x} - 1,5\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </article>
+            <article>
+                <h3 id="MEO3">Résolution d'une équation différentielle \(y' = ay + f\)  <a href="#CA3">(revoir le programme officiel)</a></h3>
+                <ol start="8">
+                    <li class="question" data-points="3" data-type="checkbox">
+                        <p>
+                            Quelles sont les solutions de l'équation différentielle 
+                            \[(E_0) : y' = y\]
+                            (extrait de l'exercice 3 du sujet du 21 mars 2024 
+                            <a href="https://apmep.fr/IMG/pdf/Etranger_J1_spe_5_06_2024_DV.pdf" target="_blank">centres étrangers</a>)
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q8r1" data-correct><label for="q8r1">\(0\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q8r2" data-correct><label for="q8r2">\(e^x\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q8r3"><label for="q8r3">\(e^{-x}\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q8r4" data-correct><label for="q8r4">\(ke^x\) avec \(k\in\mathbb{R}\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="1" data-type="radio">
+                        <p>
+                            Une solution particulière de l'équation différentielle 
+                            \[(E) : y' = y - \cos(x) - 3\sin(x)\]
+                            est : 
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="radio" id="q9r1"><label for="q9r1">\(h(x) = 2\sin(x) + \cos(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q9r2"><label for="q9r2">\(h(x) = 2\cos(x) - \sin(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q9r21"><label for="q9r3">\(h(x) = 2\sin(x) - \cos(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="q9r4" data-correct><label for="q9r4">\(h(x) = 2\cos(x) - \sin(x)\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="question" data-points="4" data-type="checkbox">
+                        <p>
+                            Si \(f\) et \(h\) sont solutions de \((E)\) alors : 
+                        </p>
+                        <ol class="resp">
+                            <li>
+                                <input type="checkbox" id="q10r1" data-correct><label for="q10r1">\(f' = f - \cos(x) - 3\sin(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q10r2" data-correct><label for="q10r2">\(h' = h - \cos(x) - 3\sin(x)\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q10r3" data-correct><label for="q10r3">\(f' - h' = f - h\)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="q10r4" data-correct><label for="q10r4">\(f - h\) solution de \((E_0)\)</label>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </article>
+
+        </section>
+
+        <button id="submit-btn">Envoyer</button>
+        <div id="score-details">
+            <p id="score-display"></p>
+            <ul id="question-points"></ul>
+        </div>
+
+    </main>
+    <footer>
+        <p>📚 Envie de progresser en maths ? Voir mon annonce sur <a href="https://www.superprof.fr/reussissez-maths-niveau-etudes-esprit.html" target="_blank">superprof</a></p>
+        <ul>
+            <li>
+                <a href="https://didaskalosmanthanon.github.io/geometry/index.html" target="_blank">Exercices de géométrie (niveau 3<sup>ème</sup> - 2<sup>de</sup>)</a>
+             </li>
+             <li>
+                <a href="https://didaskalosmanthanon.github.io/testimonial-slider/index.html" target="_blank">Ce que mes élèves pensent de mes cours de maths</a>
+             </li>
+        </ul>
+        <p>Pour entrer en contact remplissez ce <a href="https://forms.gle/mcZ5uMv1BjynrWrz9" target="_blank">formulaire</a></p>
+        <p>&copy; 2025 - <strong>Didaskalos Manthanon</strong>, <em>Apprenez à devenir un maître apprenant</em></p>
+        
+      </footer>
+
+      <script src="script.js"></script>
+</body>
+
+</html>
